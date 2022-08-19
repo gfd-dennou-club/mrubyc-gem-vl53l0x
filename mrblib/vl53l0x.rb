@@ -1,3 +1,4 @@
+# coding: utf-8
 # VL53L0X
 
 # Referense:
@@ -246,7 +247,7 @@ class VL53L0X
     #     センサレジスタの値(8bit)
 
     @i2c.write(@address, reg)
-    data = @i2c.read_integer(@address, 1)
+    data = @i2c.readfrom(@address, 1)
     data[0]
   end
 
@@ -258,7 +259,7 @@ class VL53L0X
     #     センサレジスタの値(16bit)
 
     @i2c.write(@address, reg)
-    data = @i2c.read_integer(@address, 2)
+    data = @i2c.readfrom(@address, 2)
     (data[0] << 8) | data[1]
   end
 
@@ -270,7 +271,7 @@ class VL53L0X
     #     センサレジスタの値(32bit)
 
     @i2c.write(@address, reg)
-    data = @i2c.read_integer(@address, 4)
+    data = @i2c.readfrom(@address, 4)
     (data[0] << 24) | (data[1] << 16) | (data[2] << 8) | data[3]
   end
 
@@ -295,7 +296,7 @@ class VL53L0X
     @i2c.write(@address, reg)
     dst = []
     (0...count).each do |i|
-      data = @i2c.read_integer(@address, 1)
+      data = @i2c.readfrom(@address, 1)
       dst[i] = data[0]
     end
     dst
