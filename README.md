@@ -7,7 +7,7 @@ https://www.switch-science.com/catalog/3647/
 ## sample code
 
 ```ruby
-i2c = I2C.new(22, 21)
+i2c = I2C.new()
 vl53l0x = VL53L0X.new(i2c)
 vl53l0x.set_timeout(500) # タイムアウト
 
